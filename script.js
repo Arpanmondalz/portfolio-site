@@ -46,19 +46,44 @@ const projectData = {
 
 };
 
-// --- MODAL FUNCTIONS ---
+// --- TYPEWRITER EFFECT FUNCTION ---
+function typeWriter(elementId, text, speed = 10) {
+    const element = document.getElementById(elementId);
+    element.innerHTML = ""; // Clear existing
+    let i = 0;
+    
+    function type() {
+        if (i < text.length) {
+            element.innerHTML += text.charAt(i);
+            i++;
+            setTimeout(type, speed);
+        }
+    }
+    type();
+}
 
+// --- MODAL FUNCTIONS ---
 function openModal(projectId) {
     const data = projectData[projectId];
     if (!data) return;
 
-    // Populate Modal
+    // Set Title immediately
     document.getElementById('modal-title').innerText = data.title;
-    document.getElementById('modal-desc').innerText = data.desc;
-    document.getElementById('modal-extra').innerText = "/// TECHNICAL DETAILS: " + data.tech;
+    
+    // Clear description and tech initially
+    document.getElementById('modal-desc').innerText = "";
+    document.getElementById('modal-extra').innerText = "";
 
     // Show Modal
     document.getElementById('modal-overlay').style.display = 'flex';
+
+    // Trigger Typewriter Effect for Description
+    typeWriter('modal-desc', data.desc, 15); // 15ms speed
+    
+    // Simple timeout for the tech details to appear after a delay
+    setTimeout(() => {
+        document.getElementById('modal-extra').innerText = "/// SYSTEM_DATA: " + data.tech;
+    }, 500);
 }
 
 function closeModal() {
@@ -72,7 +97,9 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
+
 // Footer Date Update
 const dateElement = document.getElementById('last-updated');
 const now = new Date();
-dateElement.innerText = `LAST_UPDATED: ${now.toLocaleDateString()} | ${now.toLocaleTimeString()}`;
+// ISO 8601 Technical Format
+dateElement.innerText = `LAST UPDATED: ${now.toISOString().split('T')[0]}`; 
