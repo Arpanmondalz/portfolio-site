@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arpan Mondal | R&D Archive</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- HEADER -->
+        <header>
+            <div class="status-bar">/// SYSTEM STATUS: ONLINE /// INDIA_RESEARCH_NODE</div>
+            <h1>ARPAN MONDAL</h1>
+            <p class="role">Lead AI Researcher @ Bell Flight | Engineer | Maker | Author | Artist</p>
+        </header>
+
+        <!-- SECTOR 01: LOGIC CORE (RESEARCH) -->
+        <div class="sector-header">
+            <span class="sector-id">SECTOR_01</span> LOGIC CORE [PROFESSIONAL_RESEARCH]
+        </div>
+
+        <div class="grid-2">
+            <!-- Project 1: Fatigue Analysis -->
+            <!-- Added 'data-' attributes to pass info to the modal -->
+            <div class="card" onclick="openModal('fatigue')">
+                <div class="card-tag">PREDICTIVE</div>
+                <img src="sn-curve.png" alt="Fatigue Graph" class="project-img">
+                <h3>Physics-Informed Fatigue AI</h3>
+                <p>Integrating physics equations into neural networks to predict fatigue damage in aircraft components.</p>
+            </div>
+
+            <!-- NEW Project 2: Anomaly Detector -->
+            <div class="card" onclick="openModal('anomaly')">
+                <div class="card-tag">FLIGHT_TEST</div>
+                    <img src="anomaly.png" alt="Anomaly" class="project-img">
+                <h3>Flight Test Anomaly Detector</h3>
+                <p>Autoencoder-based system that triggers automatic shutdowns upon detecting real-time sensor anomalies.</p>
+            </div>
+            
+
+            <!-- Project 3: EHS LLM -->
+            <div class="card" onclick="openModal('ehs-llm')">
+                <div class="card-tag">INSIGHT</div>
+                    <img src="ehs.png" alt="NLP EHS" class="project-img">
+                <h3>Environtment, Health & Safety</h3>
+                <p>LLM system that parses incident reports to generate location-specific safety and prevention strategies.</p>
+            </div>
+
+            <!-- NEW Project 4: Injury Forecaster -->
+            <div class="card" onclick="openModal('injury')">
+                <div class="card-tag">PREVENTIVE</div>
+                    <img src="injury.png" alt="Injury forecast" class="project-img">
+                <h3>AI Injury Forecaster</h3>
+                <p>EHS predictive model forecasting injury probability using shift schedules, location, and seasonal data.</p>
+            </div>
+            </div>
+
+            
+
+        <!-- SECTOR 02: HARDWARE BAY (MAKESTREME) -->
+        <div class="sector-header">
+            <span class="sector-id">SECTOR_02</span> HARDWARE BAY [PERSONAL PROJECTS]
+        </div>
+
+        <div class="grid-2">
+            <!-- Space Drums -->
+            <div class="card" onclick="openModal('drums')">
+                <div class="card-tag">Ongoing</div>
+                <img src="space-drums.png" alt="Space Drums" class="project-img">
+                <h3>Project: Space Drums</h3>
+                <p>Sensor-equipped drumsticks using AI motion tracking to simulate a full drum kit in the air.</p>
+            </div>
+
+            <!-- Gus -->
+            <div class="card" onclick="openModal('lamp')">
+                <div class="card-tag">ENVIRONMENTAL_AWARENESS</div>
+                <img src="gus.jpg" alt="Angry Lamp" class="project-img">
+                <h3>Project: Gus 2.0</h3>
+                <p>Smart desktop robot that indicates workspace health through continuous environmental sensor monitoring.</p>
+            </div>
+        </div>
+
+                <!-- SECTOR 03: CREATIVE MODULE -->
+        <div class="sector-header">
+            <span class="sector-id">SECTOR_03</span> CREATIVE MODULE [ART & FICTION]
+        </div>
+
+        <div class="grid-2">
+            <!-- Sci-Fi Book -->
+            <div class="card" onclick="openModal('scifi')">
+                <div class="card-tag">PUBLISHED_AUTHOR</div>
+                <!-- ASSET: book-cover.jpg -->
+                <img src="book-cover.jpg" alt="Sci-Fi Book Cover" class="project-img">
+                <h3>The Author</h3>
+                <p>Writing engaging hard sci-fi narratives grounded in real theories to ensure scientific accuracy.</p>
+            </div>
+
+            <!-- Painting -->
+            <div class="card" onclick="openModal('art')">
+                <div class="card-tag">INK_AND_WATERCOLOR</div>
+                <!-- ASSET: art-thumb.jpg -->
+                <img src="art.png" alt="Painting Thumbnail" class="project-img">
+                <h3>The Artist</h3>
+                <p>Capturing the chaotic beauty of the world through watercolor and ink illustration.</p>
+            </div>
+        </div>
+
+
+        <!-- FOOTER -->
+        <footer>
+            <div id="last-updated">LAST_UPDATED: CALCULATING...</div>
+            <div>© ARPAN MONDAL</div>
+        </footer>
+
+    </div>
+
+    <!-- MODAL POPUP (Hidden by default) -->
+    <div id="modal-overlay" class="modal-backdrop" onclick="closeModal()">
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <span class="close-btn" onclick="closeModal()">x</span>
+            <h2 id="modal-title" style="color: var(--accent-blue); margin-bottom: 10px;">Title</h2>
+            <p id="modal-desc" style="color: var(--text-primary);">Description goes here...</p>
+            <div id="modal-extra" style="margin-top: 20px; font-size: 0.8rem; border-top: 1px dashed #ccc; padding-top: 10px;">
+                <!-- Extra technical details go here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+/* --- SYSTEM VARIABLES --- */
+:root {
+    --bg-paper: #f8f9fa;
+    --grid-line: rgba(0, 86, 179, 0.05);
+    --text-primary: #2c3e50;
+    --text-secondary: #546e7a;
+    --accent-blue: #0056b3;
+    --accent-orange: #e67e22;
+    --border-tech: 1px solid #cbd5e1;
+    --glass-white: rgba(255, 255, 255, 0.85); /* More transparent for fade effect */
+}
+
+/* --- GLOBAL RESET --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'JetBrains Mono', monospace;
+    background-color: var(--bg-paper);
+    color: var(--text-primary);
+    line-height: 1.6;
+    overflow-x: hidden;
+    
+    /* THE GRAPH PAPER EFFECT */
+    background-image: 
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 40px 40px;
+}
+
+/* --- LAYOUT UTILITIES --- */
+.container {
+    max-width: 1200px; /* WIDENED from 1000px */
+    margin: 0 auto;
+    padding: 40px 40px; /* More breathing room */
+    min-height: 100vh;
+    background: var(--glass-white);
+    
+    /* THE FADE EFFECT (Masking) */
+    /* This makes the left/right edges soft, blending into grid */
+    mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 5%, black 95%, transparent);
+    
+    /* Subtle blur backdrop for modern feel */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+}
+
+/* --- HEADER SECTION --- */
+header {
+    margin-bottom: 40px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--text-primary);
+    text-align: center;
+}
+
+.hero-image-container {
+    width: 100%;
+    height: 250px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border: var(--border-tech);
+    position: relative;
+}
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Image mask to fade bottom into text */
+    mask-image: linear-gradient(to bottom, black 70%, transparent);
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent);
+}
+
+.status-bar {
+    font-size: 0.8rem;
+    color: var(--accent-orange);
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: -2px;
+}
+
+.role {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+    margin-top: 10px;
+}
+
+/* --- SECTOR DIVIDERS --- */
+.sector-header {
+    display: flex;
+    align-items: center;
+    margin-top: 80px;
+    margin-bottom: 30px;
+    background: var(--text-primary);
+    color: white;
+    padding: 10px 30px;
+    width: fit-content;
+    clip-path: polygon(0 0, 95% 0, 100% 100%, 0% 100%); /* Angled tech edge */
+}
+
+.sector-id {
+    font-weight: 700;
+    margin-right: 15px;
+    color: var(--accent-orange);
+}
+
+/* --- CARDS & GRID --- */
+.grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 40px;
+}
+
+/* Make the Card Clickable */
+.card {
+    background: white;
+    border: var(--border-tech);
+    padding: 25px;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+    cursor: pointer; /* Hand cursor to indicate click */
+}
+
+.card:hover {
+    transform: translateY(-5px) scale(1.01);
+    box-shadow: 0 10px 30px -10px rgba(0, 86, 179, 0.2);
+    border-color: var(--accent-blue);
+}
+
+/* Tiny "Expand" icon on hover */
+.card::after {
+    content: '+ [EXPAND]';
+    position: absolute;
+    bottom: 20px;
+    right: 20px;
+    font-size: 0.7rem;
+    color: var(--accent-blue);
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.card:hover::after {
+    opacity: 1;
+}
+
+.card-tag {
+    position: absolute;
+    top: -10px;
+    right: 10px;
+    background: var(--bg-paper);
+    border: var(--border-tech);
+    padding: 2px 8px;
+    font-size: 0.7rem;
+    color: var(--accent-blue);
+    font-weight: bold;
+}
+
+.project-img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    background-color: #f1f5f9;
+    margin-bottom: 15px;
+    border: var(--border-tech);
+}
+
+h3 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+    color: var(--accent-blue);
+}
+
+p {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    margin-bottom: 15px;
+}
+
+/* --- MODAL SYSTEM (The Pop-up) --- */
+.modal-backdrop {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(10, 25, 47, 0.8); /* Dark blue tint */
+    backdrop-filter: blur(5px);
+    z-index: 999;
+    display: none; /* Hidden by default */
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    width: 80%;
+    max-width: 700px;
+    padding: 40px;
+    border-top: 5px solid var(--accent-orange);
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+    animation: slideIn 0.3s ease-out;
+}
+
+.close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-secondary);
+}
+
+.close-btn:hover { color: var(--accent-orange); }
+
+@keyframes slideIn {
+    from { transform: translateY(20px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+
+/* --- FOOTER --- */
+footer {
+    margin-top: 80px;
+    border-top: 2px solid var(--text-primary);
+    padding-top: 20px;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-secondary);
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .grid-2 { grid-template-columns: 1fr; }
+    .container { mask-image: none; -webkit-mask-image: none; padding: 20px; }
+    .hero-image-container { height: 150px; }
+    .modal-content { width: 95%; padding: 20px; }
+}
+
