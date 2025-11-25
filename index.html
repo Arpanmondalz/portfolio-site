@@ -46,7 +46,7 @@
             <div class="card" onclick="openModal('ehs-llm')">
                 <div class="card-tag">INSIGHT</div>
                     <img src="ehs.png" alt="NLP EHS" class="project-img">
-                <h3>Environtment, Health & Safety</h3>
+                <h3>Environment, Health & Safety</h3>
                 <p>LLM system that parses incident reports to generate location-specific safety and prevention strategies.</p>
             </div>
 
@@ -81,6 +81,25 @@
                 <img src="gus.jpg" alt="Angry Lamp" class="project-img">
                 <h3>Project: Gus 2.0</h3>
                 <p>Smart desktop robot that indicates workspace health through continuous environmental sensor monitoring.</p>
+            </div>
+        </div>
+
+        <!-- NEW SECTION: THE GRAVEYARD (FAILURE LOG) -->
+        <div class="sector-header" style="background: #e74c3c; border-color: #c0392b;">
+            <span class="sector-id" style="color: white;">SECTOR_ERR</span> THE GRAVEYARD [FAILED_EXPERIMENTS]
+        </div>
+
+        <div class="graveyard-container">
+            <div class="tombstone">
+                <h4>Experiment: AI smart closet</h4>
+                <div class="failure-reason">FAILURE_MODE: UNRELIABLE_WEATHER_FORECAST</div>
+                <p>A smart closet (wardrobe) with a mini display that would suggest what to wear based on day's weather forecast and machine learning<br><strong>Result:</strong> Inaccurate weather forecasts caused ureliable clothing recommendations <br><strong>Lesson:</strong> Weather forecast data needs to be improved first. Especially with huge variations in Indian weather conditions</p>
+            </div>
+            
+            <div class="tombstone">
+                <h4>Experiment: AI flight manual generator</h4>
+                <div class="failure-reason">FAILURE_MODE: LOW_LLM_ACCURACY</div>
+                <p>Generate flight operator's manual from already present maintenence and manufacturers' manuals<br><strong>Result:</strong> Fairly good generations, but not feasible since manual inspection is required to validate the output.<br><strong>Lesson:</strong> LLMs are not 100% reliable and a balance between an Engineer's time/cost and LLM implementation needs to be made.</p>
             </div>
         </div>
 

@@ -84,3 +84,29 @@ const dateElement = document.getElementById('last-updated');
 const now = new Date();
 // ISO 8601 Technical Format
 dateElement.innerText = `LAST UPDATED: ${now.toISOString().split('T')[0]}`;
+
+/* --- CONSOLE EASTER EGG (FOR RECRUITERS) --- */
+console.log(
+  "%c/// SYSTEM_ACCESS: GRANTED ///", 
+  "color: #e67e22; font-size: 24px; font-weight: bold; background: #2c3e50; padding: 10px 20px; border-left: 5px solid #e67e22;"
+);
+
+console.log(
+  "%cHELLO ENGINEER.\nIf you are reading this, you dig deeper than most. I like that.", 
+  "font-size: 14px; color: #065fb8ff; font-family: monospace; line-height: 1.5;"
+);
+
+console.log(
+  "%cHere is the raw JSON of my project data if you want to scrape it:", 
+  "font-size: 12px; color: #b1b406ff; margin-top: 10px;"
+);
+
+// We log the actual project data object so they can inspect it
+// Using 'setTimeout' ensures 'projectData' is defined before logging if this script is at the top
+setTimeout(() => {
+    console.log(projectData);
+    console.log(
+        "%cFind my work interesting? Let's get in touch: arpanmondal2308@gmail.com", 
+        "color: #2980b9; font-weight: bold; margin-top: 10px;"
+    );
+}, 1000);
