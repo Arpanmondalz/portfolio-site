@@ -189,6 +189,49 @@ p {
     font-family: 'JetBrains Mono', monospace;
 }
 
+/* --- THE GRAVEYARD (FAILURE LOG) STYLES --- */
+.graveyard-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-bottom: 60px;
+}
+
+.tombstone {
+    background: rgba(231, 76, 60, 0.05); /* Very faint red background */
+    border: 1px dashed #e74c3c; /* Dashed red border like a warning zone */
+    padding: 25px;
+    position: relative;
+    transition: transform 0.2s;
+}
+
+.tombstone:hover {
+    transform: translateY(-3px);
+    background: rgba(231, 76, 60, 0.1);
+}
+
+.tombstone h4 {
+    color: #c0392b; /* Dark Red */
+    font-family: 'JetBrains Mono', monospace;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+.failure-reason {
+    display: inline-block;
+    background: #c0392b;
+    color: white;
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+/* Mobile responsiveness for Graveyard */
+@media (max-width: 768px) {
+    .graveyard-container { grid-template-columns: 1fr; }
+}
+
 /* --- MODAL SYSTEM --- */
 .modal-backdrop {
     position: fixed;
