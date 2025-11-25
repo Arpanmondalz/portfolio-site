@@ -1,7 +1,4 @@
-/* --- DATA STORE --- 
-   This holds the detailed info for the modal popups. 
-   Edit this text to change what appears when clicked. 
-*/
+/* --- DATA STORE --- */
 const projectData = {
     'fatigue': {
         title: "Physics-Informed Fatigue AI",
@@ -43,47 +40,25 @@ const projectData = {
         desc: "Engineering is precise; Art is chaotic. I paint to explore the other side of my brain. My style focuses on abstract watercolor and/or ink sketches, sometimes from real life references. My latest work 'Frozen Intelligence' captures the internal beauty of a Neural Network to prove they are not 'black boxes' like many people claim.",
         tech: "Medium: Watercolor, Ink, Acrylics."
     }
-
 };
 
-// --- TYPEWRITER EFFECT FUNCTION ---
-function typeWriter(elementId, text, speed = 10) {
-    const element = document.getElementById(elementId);
-    element.innerHTML = ""; // Clear existing
-    let i = 0;
-    
-    function type() {
-        if (i < text.length) {
-            element.innerHTML += text.charAt(i);
-            i++;
-            setTimeout(type, speed);
-        }
-    }
-    type();
-}
 
-// --- MODAL FUNCTIONS ---
+// --- MODAL FUNCTIONS (INSTANT LOAD) ---
 function openModal(projectId) {
     const data = projectData[projectId];
     if (!data) return;
 
-    // Set Title immediately
+    // 1. Set Title
     document.getElementById('modal-title').innerText = data.title;
     
-    // Clear description and tech initially
-    document.getElementById('modal-desc').innerText = "";
-    document.getElementById('modal-extra').innerText = "";
+    // 2. Set Description (INSTANTLY - NO TYPEWRITER)
+    document.getElementById('modal-desc').innerText = data.desc;
 
-    // Show Modal
+    // 3. Set Tech Details (INSTANTLY)
+    document.getElementById('modal-extra').innerText = "/// SYSTEM_DATA: " + data.tech;
+
+    // 4. Show Modal
     document.getElementById('modal-overlay').style.display = 'flex';
-
-    // Trigger Typewriter Effect for Description
-    typeWriter('modal-desc', data.desc, 15); // 15ms speed
-    
-    // Simple timeout for the tech details to appear after a delay
-    setTimeout(() => {
-        document.getElementById('modal-extra').innerText = "/// SYSTEM_DATA: " + data.tech;
-    }, 500);
 }
 
 function closeModal() {
@@ -97,9 +72,15 @@ document.addEventListener('keydown', function(event) {
     }
 });
 
+// Close modal on clicking outside the box (Overlay click)
+document.getElementById('modal-overlay').addEventListener('click', function(event) {
+    if (event.target === this) {
+        closeModal();
+    }
+});
 
 // Footer Date Update
 const dateElement = document.getElementById('last-updated');
 const now = new Date();
 // ISO 8601 Technical Format
-dateElement.innerText = `LAST UPDATED: ${now.toISOString().split('T')[0]}`; 
+dateElement.innerText = `LAST UPDATED: ${now.toISOString().split('T')[0]}`;
