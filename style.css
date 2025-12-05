@@ -298,6 +298,34 @@ p {
     background: rgba(255,255,255,0.02);
 }
 
+.floating-icon {
+    position: fixed;
+    bottom: 20px;
+    right: 25px;
+    width: 70px; 
+    height: auto;
+    z-index: 1000;
+    background: transparent;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* This creates the "cartoon" spring physics */
+    transition: transform 0.4s cubic-bezier(0.25, 1.5, 0.5, 1);
+}
+.floating-icon img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+} 
+.floating-icon:hover {
+    /* Zooms the icon to 1.2 times its size */
+    transform: scale(1.2);
+}
+
+
+
 /* --- FOOTER --- */
 footer {
     margin-top: 100px;
